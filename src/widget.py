@@ -23,3 +23,9 @@ def mask_account_card(account: str) -> str:
         masked_account = f'{card_type_str} {masks.get_mask_account(card_number_str)}'
 
     return masked_account
+
+
+def get_date(date: str) -> str:
+    """ Функция, которая форматирует введённую дату """
+
+    return f'{date[8:10]}.{date[5:7]}.{date[0:4]}'
