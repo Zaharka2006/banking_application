@@ -18,9 +18,7 @@ def mask_account_card(account: str) -> str:
     card_number_str = " ".join(card_number)
 
     if card_type_str != "Счет":
-        masked_account = (
-            f"{card_type_str} {masks.get_mask_card_number(card_number_str)}"
-        )
+        masked_account = f"{card_type_str} {masks.get_mask_card_number(card_number_str)}"
     else:
         masked_account = f"{card_type_str} {masks.get_mask_account(card_number_str)}"
 
