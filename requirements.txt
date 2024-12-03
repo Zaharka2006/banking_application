@@ -1,0 +1,11 @@
+mypy~=1.13.0
+black~=24.10.0
+platformdirs~=4.3.6
+colorama~=0.4.6
+packaging~=24.2
+pathspec~=0.12.1
+click~=8.1.7
+isort~=5.13.2
+flake8~=7.1.1
+pyflakes~=3.2.0
+pycodestyle~=2.12.1
