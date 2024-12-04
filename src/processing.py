@@ -3,33 +3,35 @@ from datetime import datetime
 from src.widget import get_date
 
 
-def fiter_by_state(dict_list: list, key_value: str = "EXECUTED") -> list:
+def filter_by_state(operation_list: list[dict], key_value: str = "EXECUTED") -> list[dict]:
     """Функция возвращает новый список словарей,
     содержащий только те словари, у которых ключ
     state соответствует указанному значению."""
-    new_dict_list = []
+    new_operation_list = []
 
-    for user in dict_list:
+    for user in operation_list:
         if user["state"] == key_value:
-            new_dict_list.append(user)
+            new_operation_list.append(user)
 
-    return new_dict_list
+    return new_operation_list
 
 
-def sort_by_date(dict_list: list, is_reverse: bool = True) -> list:
+def sort_by_date(operation_list: list[dict], is_reverse: bool = True) -> list[dict]:
     """Эта функция, которая сортирует операции по дате в порядке убывания"""
 
-    dates_list = []
-    users_list = []
+    formatted_dates = []
+    new_operation_list = []
 
-    for item in dict_list:
-        dates_list.append(get_date(item["date"]))
+    for item in operation_list:
+        formatted_dates.append(get_date(item["date"]))
 
-    sorted_dates_list = sorted(dates_list, key=lambda date: datetime.strptime(date, "%d.%m.%Y"), reverse=is_reverse)
+    sorted_dates_list = sorted(formatted_dates,
+                               key=lambda date: datetime.strptime(date, "%d.%m.%Y"),
+                               reverse=is_reverse)
 
     for dates in sorted_dates_list:
-        for item in dict_list:
+        for item in operation_list:
             if dates == get_date(item["date"]):
-                users_list.append(item)
+                new_operation_list.append(item)
 
-    return users_list
+    return new_operation_list
